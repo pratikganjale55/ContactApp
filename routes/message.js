@@ -26,11 +26,11 @@ route.post("/sendotp/:userId", async(req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000) ;
    
 
-    const {name, message} = req.body ;
+    const {name, message, time} = req.body ;
 
-    var d = new Date();
+    // var d = new Date();
    
-    let time = d.toLocaleTimeString();
+    // let time = d.toLocaleTimeString();
     
 
     if(!message){
