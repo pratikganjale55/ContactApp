@@ -31,21 +31,7 @@ route.post("/sendotp/:userId", async(req, res) => {
     var d = new Date();
    
     let time = d.toLocaleTimeString();
-     // send otp message to client //
-
-     client.messages.create({
-        body : `Hi. Your OTP is: ${otp} ${time}` ,
-        from : "+12056068242"  ,
-        to :  "+919890830962"  
-    })
-    .then((msg) => {
-            return res.status(201).send({massage : "massage send success"})
-    })
-    .catch((e) => {
-        console.log(e)
-        return res.json({error : e.massage})
-
-    })
+    
 
     if(!message){
         return res.status(401).send({message : "Type something..."})
@@ -59,7 +45,21 @@ route.post("/sendotp/:userId", async(req, res) => {
         console.log(e)
     })
     
-   
+    // send otp message to client //
+
+    client.messages.create({
+        body : `Hi. Your OTP is: ${otp} ${time}` ,
+        from : "+12056068242"  ,
+        to :  "+919890830962"  
+    })
+    .then((msg) => {
+            return res.status(201).send({massage : "massage send success"})
+    })
+    .catch((e) => {
+        console.log(e)
+        return res.json({error : e.massage})
+
+    })
 })
 
 // sort data by name //
